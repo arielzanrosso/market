@@ -7,8 +7,9 @@ pull the project github to eclipse, netbean or other;
 
 run class as Java Application "ApirestApplication.java";
 
-access http://localhost:8080/swagger-ui.html for test controllers.
+access http://localhost:8080/swagger-ui.html
 
+suggestions:
 add munufacturer:
         
           {
