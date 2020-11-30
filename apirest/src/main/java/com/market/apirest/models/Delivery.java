@@ -2,6 +2,7 @@ package com.market.apirest.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Delivery implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@Column(name = "delivery_mode", nullable=false, length = 50 )
 	private String mode;
 
 	public long getId() {

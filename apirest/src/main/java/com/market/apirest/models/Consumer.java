@@ -19,11 +19,13 @@ public class Consumer implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@Column(nullable = false)
+	@Column(name = "consumer_name", nullable=false, length = 50)
 	private String name;
 	
+	@Column(name = "consumer_phone", nullable=false, length = 50)
 	private String phone;
 	
+	@Column(name = "consumer_email", nullable=false, length = 50)
 	private String email;
 
 	public long getId() {

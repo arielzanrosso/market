@@ -3,7 +3,7 @@ package com.market.apirest.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,15 +21,20 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@Column(nullable=false, length = 50)
 	private String mode;
 	
-	
+	@Transient
 	private BigDecimal amount;
 	
+	@Column(nullable = false)
 	private BigDecimal installments;
 	
 	@Transient
-	private BigDecimal installmentValue;
+	private BigDecimal firstInstallmentValue;
+	
+	@Transient
+	private BigDecimal othersInstallmentValue;
 
 	public long getId() {
 		return id;
@@ -63,9 +68,25 @@ private static final long serialVersionUID = 1L;
 		this.installments = installments;
 	}
 
-	public BigDecimal getInstallmentValue() {
-		return this.installments.multiply(this.amount);
+	public BigDecimal getFirstInstallmentValue() {
+		return firstInstallmentValue;
 	}
+
+	public void setFirstInstallmentValue(BigDecimal firstInstallmentValue) {
+		this.firstInstallmentValue = firstInstallmentValue;
+	}
+
+	public BigDecimal getOthersInstallmentValue() {
+		return othersInstallmentValue;
+	}
+
+	public void setOthersInstallmentValue(BigDecimal othersInstallmentValue) {
+		this.othersInstallmentValue = othersInstallmentValue;
+	}
+
+	
+	
+	
 
 	
 

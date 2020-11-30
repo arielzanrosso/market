@@ -3,7 +3,7 @@ package com.market.apirest.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +28,8 @@ public class Item implements Serializable {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Product product;
-		
+	
+	@Column(name = "item_units", nullable=false)
 	private BigDecimal units;
 	
 	@Transient
@@ -59,11 +60,16 @@ public class Item implements Serializable {
 	}
 
 	public BigDecimal getAmount() {
-		return this.units.multiply(this.getProduct().getPrice());
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 
 	
-
+	
+	
 	
 
 	

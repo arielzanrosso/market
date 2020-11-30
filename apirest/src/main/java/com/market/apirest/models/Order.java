@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,19 +29,21 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private boolean status;
+	@Column(name = "order_status", nullable=false, length = 50 )
+	private String status;
 	
 	 @OneToMany(targetEntity = Item.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	 private List<Item> items;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = Consumer.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(nullable=false)
 	private Consumer consumer;
 	
-	@Column(nullable = false, precision = 6, scale = 2)
+	@OneToOne(targetEntity = Payment.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(nullable=false)
 	private Payment payment;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = Delivery.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(nullable=false)
 	private Delivery delivery;
 
@@ -52,11 +55,13 @@ private static final long serialVersionUID = 1L;
 		this.id = id;
 	}
 
-	public boolean isStatus() {
+	
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

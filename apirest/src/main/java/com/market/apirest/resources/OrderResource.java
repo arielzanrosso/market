@@ -1,8 +1,11 @@
 package com.market.apirest.resources;
 
+
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.market.apirest.models.Item;
+
 import com.market.apirest.models.Order;
 
 import com.market.apirest.repository.OrderRepository;
 
+import com.market.apirest.tools.OrderFix;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 @RequestMapping(value="/api")
@@ -29,23 +35,27 @@ public class OrderResource {
 
 	@Autowired
 	OrderRepository orderRepository;
+	OrderFix orderFix = new OrderFix();
+	
 	
 	@GetMapping("/orders")
 	@ApiOperation(value="Return a order list")
 	public List<Order> listOrders(){
-		return orderRepository.findAll();
+		return orderFix.orderFix(orderRepository.findAll());
 	}
 
 	@GetMapping("/order/{id}")
 	@ApiOperation(value="Return a single order")
 	public Order listOrdersUn(@PathVariable(value="id") long id){
-		return orderRepository.findById(id);
+
+		return orderFix.orderFix(orderRepository.findById(id));
 	}
 	
 	@PostMapping("/order")
 	@ApiOperation(value="Save a order")
 	public Order saveOrder(@RequestBody Order order)
 	{
+
 		return orderRepository.save(order);
 	}
 	

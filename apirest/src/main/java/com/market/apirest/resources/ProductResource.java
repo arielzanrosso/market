@@ -3,6 +3,7 @@ package com.market.apirest.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.market.apirest.models.Product;
+
 import com.market.apirest.repository.ProductRepository;
 
 import io.swagger.annotations.Api;
@@ -27,6 +30,7 @@ public class ProductResource {
 	
 	@Autowired
 	ProductRepository productRepository;
+	
 	
 	@GetMapping("/products")
 	@ApiOperation(value="Return a product list")
@@ -44,6 +48,7 @@ public class ProductResource {
 	@ApiOperation(value="Save a product")
 	public Product saveProduct(@RequestBody Product product)
 	{
+
 		return productRepository.save(product);
 	}
 	

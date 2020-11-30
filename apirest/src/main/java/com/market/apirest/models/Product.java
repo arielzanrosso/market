@@ -3,8 +3,10 @@ package com.market.apirest.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,20 +24,21 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	
+	@Column(name = "product_name", nullable=false, length = 50)
 	private String name;
 	
+	@Column(name = "product_description", nullable=false, length = 50)
 	private String description;
 	
-	@Column(nullable=false, unique = true)
+	@Column(name = "product_barcode", nullable=false, unique = true, length = 13 )
 	private String barcode;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private Manufacturer manufacturer;
 	
-	@Column(nullable = false, precision = 6, scale = 2)
-	private BigDecimal  price;
+	@Column(name = "product_unitprice", nullable = false, precision = 6, scale = 2)
+	private BigDecimal  unitPrice;
 
 	public long getId() {
 		return id;
@@ -77,13 +80,15 @@ public class Product implements Serializable {
 		this.manufacturer = manufacturer;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
+	public BigDecimal getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setUnitPrice(BigDecimal unitPrice) {
+		this.unitPrice = unitPrice;
 	}
+
+	
 
 	
 	
