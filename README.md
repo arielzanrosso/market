@@ -3,13 +3,13 @@ Project Market
 
 create database in postgreSQL named "market";
 
-pull the project github to eclipse, netbean or other;
+pull the project github to eclipse, netbeans or other;
 
 run class as Java Application "ApirestApplication.java";
 
 access http://localhost:8080/swagger-ui.html
 
-suggestions:
+examples:
 add munufacturer:
         
           {
