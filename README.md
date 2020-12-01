@@ -81,23 +81,29 @@ add Order:
           ],
   
   "consumer": {
+  
                "name": "Ariel Zanrosso",
                "phone": "+5542991072505",
                "email": "arielzanrosso@gmail.com"
+               
               },
               
   "payment": {
+  
               "mode": "bank slip",
               "installments": 2
+              
              },
              
   "delivery": {
+  
              "mode": "in-store withdrawal"
+             
              },
 
             "status": "ok"
 
-   }
+      }
 
 
 
