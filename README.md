@@ -65,35 +65,39 @@ add Order:
           {
   "items": [
     
- {
-      "product": {
-        "id": 5
-      },
-      "units": 1
-    },
-      { 
-      "product": {  
-        "id": 4 
-      },
-      "units": 1
-    }
-  ],
+              {
+               "product": {
+                 "id": 5
+                },
+              "units": 1
+             },
+             
+             { 
+             "product": {  
+                "id": 4 
+             },
+             "units": 1
+             }
+          ],
+  
   "consumer": {
-    "name": "Ariel Zanrosso",
-    "phone": "+5542991072505",
-    "email": "arielzanrosso@gmail.com"
-  },
+               "name": "Ariel Zanrosso",
+               "phone": "+5542991072505",
+               "email": "arielzanrosso@gmail.com"
+              },
+              
   "payment": {
-    "mode": "bank slip",
-    "installments": 2
-  },
+              "mode": "bank slip",
+              "installments": 2
+             },
+             
   "delivery": {
-    "mode": "in-store withdrawal"
-  },
+             "mode": "in-store withdrawal"
+             },
 
- "status": "ok"
+            "status": "ok"
 
-}
+   }
 
 
 
